@@ -31,4 +31,9 @@
   <!-- EN: reloading for TargetA. -->
   <WG_ReloadAtGantry.reportString>TargetAの装弾中。</WG_ReloadAtGantry.reportString>
 
+  <WG_GetInEjector.reportString>カタパルトに搭乗中</WG_GetInEjector.reportString>
+  <WG_InstallModuleAtGantry.reportString>TargetA にモジュールを装着中。</WG_InstallModuleAtGantry.reportString>
+  <WG_RemoveModuleAtGantry.reportString>TargetA からモジュールを取り外し中。</WG_RemoveModuleAtGantry.reportString>
+  <WG_ClearAmmoBackpack.reportString>弾薬バックパックを荷下ろし中。</WG_ClearAmmoBackpack.reportString>
+
 </LanguageData>

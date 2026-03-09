@@ -14,5 +14,7 @@
   <WG_RepairAtGantry.gerund>维修中</WG_RepairAtGantry.gerund>
   <!-- EN: repair -->
   <WG_RepairAtGantry.verb>检修</WG_RepairAtGantry.verb>
+
+  <WG_ModuleAtGantry.label>在整备架上安装或卸载模块</WG_ModuleAtGantry.label>
   
 </LanguageData>

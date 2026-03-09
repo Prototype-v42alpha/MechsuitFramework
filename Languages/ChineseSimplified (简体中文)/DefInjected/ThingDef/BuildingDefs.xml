@@ -35,5 +35,8 @@
   
   <!-- EN: flying -->
   <WG_PawnFlyer.label>机甲(飞行中)</WG_PawnFlyer.label>
+
+  <MF_Building_PayloadStorage.label>载荷货架</MF_Building_PayloadStorage.label>
+  <MF_Building_PayloadStorage.description>用于库存管理的置物架。登上外骨骼时，驾驶员会自动提取其中可用物品；外骨骼停靠后，符合该货架过滤条件的物品会自动卸载到这里。</MF_Building_PayloadStorage.description>
   
 </LanguageData>

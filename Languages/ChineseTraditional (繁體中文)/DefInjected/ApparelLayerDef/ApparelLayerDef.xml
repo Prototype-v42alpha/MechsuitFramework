@@ -9,5 +9,9 @@
   
   <!-- EN: utility modules -->
   <WG_WalkerGearLayer_Utility.label>通用模塊</WG_WalkerGearLayer_Utility.label>
+
+  <ExosuitLayer_Core.label>核心模塊</ExosuitLayer_Core.label>
+  <ExosuitLayer_Attach.label>附加模塊</ExosuitLayer_Attach.label>
+  <ExosuitLayer_Utility.label>通用模塊</ExosuitLayer_Utility.label>
   
 </LanguageData>

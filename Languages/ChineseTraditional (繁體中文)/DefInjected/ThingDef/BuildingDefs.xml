@@ -31,5 +31,10 @@
   
   <!-- EN: flying -->
   <WG_PawnFlyer.label>機甲(飛行中)</WG_PawnFlyer.label>
+
+  <MF_Building_PayloadStorage.label>載荷貨架</MF_Building_PayloadStorage.label>
+  <MF_Building_PayloadStorage.description>用於庫存管理的置物架。登上外骨骼時，駕駛員會自動提取其中可用物品；外骨骼停靠後，符合該貨架過濾條件的物品會自動卸載到這裡。</MF_Building_PayloadStorage.description>
+  <MF_Building_AutoRepairArm.label>自動維修臂</MF_Building_AutoRepairArm.label>
+  <MF_Building_AutoRepairArm.description>一個自動化的維修設備，可以自動修復目標整備龍門架上的外骨骼。需要電力供應。</MF_Building_AutoRepairArm.description>
   
 </LanguageData>

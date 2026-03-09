@@ -35,5 +35,8 @@
   
   <!-- EN: flying -->
   <WG_PawnFlyer.label>flying</WG_PawnFlyer.label>
+
+  <MF_Building_PayloadStorage.label>payload shelve</MF_Building_PayloadStorage.label>
+  <MF_Building_PayloadStorage.description>A storage shelf for inventory management, Pawn will take items automatically when boarding the exosuit. And when docking the exosuit, acceptable items for this shelf will automatically unload.</MF_Building_PayloadStorage.description>
   
 </LanguageData>

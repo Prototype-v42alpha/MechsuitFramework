@@ -27,5 +27,11 @@
   
   <!-- EN: heading back to bay -->
   <WG_TakeToMaintenanceBay.reportString>heading back to bay</WG_TakeToMaintenanceBay.reportString>
+
+  <WG_GetInEjector.reportString>entering catapult</WG_GetInEjector.reportString>
+  <WG_ReloadAtGantry.reportString>reloading for TargetA.</WG_ReloadAtGantry.reportString>
+  <WG_InstallModuleAtGantry.reportString>installing module on TargetA.</WG_InstallModuleAtGantry.reportString>
+  <WG_RemoveModuleAtGantry.reportString>removing module from TargetA.</WG_RemoveModuleAtGantry.reportString>
+  <WG_ClearAmmoBackpack.reportString>unloading ammo backpack.</WG_ClearAmmoBackpack.reportString>
   
 </LanguageData>
