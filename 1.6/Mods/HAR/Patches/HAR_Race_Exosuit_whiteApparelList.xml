@@ -7,7 +7,7 @@
 			<xpath>Defs/AlienRace.ThingDef_AlienRace[.]/alienRace/raceRestriction/whiteApparelList</xpath>
 			<value>
 				<li>MF_Apparel_FuelCell</li>
-				<li MayRequire="ceteam.combatextended">MF_Module_AmmoBackpack_Heavy</li>
+				<li MayRequire="ceteam.combatextended">MF_Apparel_AmmoBackpack_Heavy</li>
 				<li MayRequire="ceteam.combatextended">MF_Apparel_AmmoBackpack</li>
 				<li MayRequire="ceteam.combatextended">MF_Apparel_AmmoBackpack_Light</li>
 			</value>
