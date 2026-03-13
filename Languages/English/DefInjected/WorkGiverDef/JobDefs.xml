@@ -14,5 +14,7 @@
   <WG_RepairAtGantry.gerund>repairing</WG_RepairAtGantry.gerund>
   <!-- EN: repair -->
   <WG_RepairAtGantry.verb>repair</WG_RepairAtGantry.verb>
+
+  <WG_ModuleAtGantry.label>install or remove module at gantry</WG_ModuleAtGantry.label>
   
 </LanguageData>

@@ -54,5 +54,7 @@
   <WG_WalkerFrame.label>戦術外骨格</WG_WalkerFrame.label>
   <!-- EN: It looks like you acquired the tech to produce a type of heavy exosuit, these suits are different from regular suits, and require a specific building to assemble and gear up or gear down. -->
   <WG_WalkerFrame.helpText>重量級外骨格を製造する技術を習得したようです。これらのスーツは通常のスーツとは異なり、組み立てや装備の着脱には特定の建物が必要です。</WG_WalkerFrame.helpText>
+
+    <WG_Frame_Wreckage.label>外骨格の残骸</WG_Frame_Wreckage.label>
   
 </LanguageData>

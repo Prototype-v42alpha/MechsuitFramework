@@ -30,4 +30,8 @@
   <!-- EN: A storage building for holding various types of weapon modules and equipment. -->
   <MF_Building_PayloadStorage.description>さまざまな種類の兵装モジュールや装備を保管するための建物です。</MF_Building_PayloadStorage.description>
 
+  <MF_Building_Wreckage.label>外骨格の残骸</MF_Building_Wreckage.label>
+  <MF_Building_AutoRepairArm.label>自動修理アーム</MF_Building_AutoRepairArm.label>
+  <MF_Building_AutoRepairArm.description>対象の整備架台上にある戦術外骨格を自動で修理する装置です。電力が必要です。</MF_Building_AutoRepairArm.description>
+
 </LanguageData>

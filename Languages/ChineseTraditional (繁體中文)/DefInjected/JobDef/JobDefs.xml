@@ -30,5 +30,10 @@
   
   <!-- EN: heading back to bay -->
   <WG_TakeToMaintenanceBay.reportString>攜帶至整備架</WG_TakeToMaintenanceBay.reportString>
+
+  <WG_ReloadAtGantry.reportString>正在為 TargetA 裝填彈藥。</WG_ReloadAtGantry.reportString>
+  <WG_InstallModuleAtGantry.reportString>正在為 TargetA 安裝模塊。</WG_InstallModuleAtGantry.reportString>
+  <WG_RemoveModuleAtGantry.reportString>正在從 TargetA 拆卸模塊。</WG_RemoveModuleAtGantry.reportString>
+  <WG_ClearAmmoBackpack.reportString>正在卸下彈藥背包。</WG_ClearAmmoBackpack.reportString>
   
 </LanguageData>
