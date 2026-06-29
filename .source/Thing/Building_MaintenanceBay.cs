@@ -358,7 +358,11 @@ namespace Exosuit
                 }
                 pawnsInBuilding.Add(Dummy);
                 
-                LongEventHandler.ExecuteWhenFinished(()=>TryUpdateCache(true));
+                LongEventHandler.ExecuteWhenFinished(()=>
+                {
+                    ResolveSlotConflicts();
+                    TryUpdateCache(true);
+                });
             }
         }
     }
@@ -422,6 +426,34 @@ namespace Exosuit
             cachePawn.Drawer.renderer.EnsureGraphicsInitialized();
             cachePawn.Drawer.renderer.SetAllGraphicsDirty();
         }*/
+        // 加载时清理历史双占同槽脏数据
+        // 保留先穿戴的 卸掉冲突的后来者
+        public void ResolveSlotConflicts()
+        {
+            if (cachePawn == null) return;
+            HashSet<SlotDef> claimed = [];
+            List<Thing> conflicts = [];
+            foreach (Apparel a in Dummy.apparel.WornApparel.ToList())
+            {
+                if (!a.TryGetComp(out CompSuitModule comp)) continue;
+                bool conflicted = comp.Props.occupiedSlots.Any(claimed.Contains);
+                if (conflicted)
+                {
+                    conflicts.Add(a);
+                    continue;
+                }
+                foreach (SlotDef s in comp.Props.occupiedSlots)
+                {
+                    claimed.Add(s);
+                }
+            }
+            if (conflicts.Count == 0) return;
+            foreach (Thing t in conflicts)
+            {
+                RemoveModule(t);
+            }
+            TryUpdateCache(true);
+        }
         protected void RemoveModule(Thing t)
         {
             if (t == null || cachePawn == null) return;
@@ -922,7 +954,6 @@ namespace Exosuit
             // 如果正在进行核心替换工作，不允许安装非核心模块
             if (!isCoreFrame && IsCoreWorkInProgress())
             {
-                Log.Warning("[Exosuit] 核心替换工作进行中，无法安装其他模块");
                 return;
             }
             
@@ -1043,8 +1074,6 @@ namespace Exosuit
                     });
                 }
             }
-            
-            Log.Message($"[Exosuit] 请求安装模块: {module.LabelCap}, 保留模块: {keepModulesOnCoreReplace}");
         }
 
         // 请求卸载模块（由 ITab 调用）
@@ -1085,8 +1114,7 @@ namespace Exosuit
                     needRemoveFirst = true,
                     removeCompleted = false
                 });
-                
-                Log.Message($"[Exosuit] 请求卸载核心，将先卸载 {pendingModuleWork.Count - 1} 个模块");
+
             }
             else
             {
@@ -1097,8 +1125,6 @@ namespace Exosuit
                     needRemoveFirst = true,
                     removeCompleted = false
                 });
-                
-                Log.Message($"[Exosuit] 请求卸载槽位: {slot.label}");
             }
         }
 
@@ -1135,7 +1161,6 @@ namespace Exosuit
         public void CancelAllCoreWork()
         {
             pendingModuleWork.Clear();
-            Log.Message("[Exosuit] 已取消所有核心工作");
         }
 
         // 取消卸载请求（通过槽位）- 只取消纯卸载请求
@@ -1150,19 +1175,14 @@ namespace Exosuit
             if (module == null) return;
             
             // 移除相关的工作请求（包括直接引用和 ThingDef 匹配）
-            pendingModuleWork.RemoveAll(w => 
-                w.moduleToInstall == module || 
+            pendingModuleWork.RemoveAll(w =>
+                w.moduleToInstall == module ||
                 (w.moduleDefToReinstall != null && w.moduleDefToReinstall == module.def));
-            
-            if (!module.TryGetComp(out CompSuitModule comp)) return;
-            
-            Apparel a = MechUtility.Conversion(module) as Apparel;
-            if (a == null) return;
-            
-            DummyApparels.GetDirectlyHeldThings().TryAdd(a, false);
-            TryUpdateCache(true);
 
-            Log.Message($"[Exosuit] 完成安装模块: {module.LabelCap}");
+            if (!module.HasComp<CompSuitModule>()) return;
+
+            // 统一走清槽穿戴原语 杜绝双占同槽
+            AddOrReplaceModule(module);
         }
 
         // 完成模块卸载（由 JobDriver 调用）
@@ -1182,8 +1202,6 @@ namespace Exosuit
             {
                 pendingModuleWork.Remove(work);
             }
-            
-            Log.Message($"[Exosuit] 完成卸载槽位: {work.targetSlot.label}");
         }
 
         // 检查模块是否在待安装队列中
@@ -1381,13 +1399,8 @@ namespace Exosuit
             {
                 if (w.moduleToInstall == null) return false;
                 if (!w.moduleToInstall.Destroyed && w.moduleToInstall.Spawned) return false;
-                
-                // 模块已销毁或未生成，需要清理
-                if (w.removeCompleted)
-                {
-                    // 卸载已完成但新模块丢失，记录警告
-                    Log.Warning($"[Exosuit] 待安装模块已丢失，槽位 {w.targetSlot?.label} 的替换工作已取消");
-                }
+
+                // 模块已销毁或未生成 清理
                 return true;
             });
         }
